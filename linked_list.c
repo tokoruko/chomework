@@ -27,13 +27,22 @@ typedef struct linkedlist{
 
 int getLength(){
     int count = 0;
-
-    current = LINKEDLIST->head;
-    while (){}
+    LINKEDLIST *plist;
+    NODE *current;
+    if (plist->head ==NULL){
+    }else{
+        count +=1;
+        current = plist->head;
+        while(current->next !=NULL){
+            count+=1;            
+            current = current->next; 
+        }
+    }
     return count;
 }
 
-int insert(int point, int value){
+//引数に構造体そのものを指すポインタがいる
+int insert(,int position, int value){
     NODE *newnode;
     LINKEDLIST *plist;
     newnode = (NODE *)malloc(sizeof(NODE));
@@ -43,13 +52,42 @@ int insert(int point, int value){
     if (plist->head==NULL){
         plist->head = newnode;
     }
-    
+
     NODE *current = plist->head;
     NODE *target; 
-    if (point==0){
+    if (position==0){
         target = current->next;
         plist->head = newnode;
         newnode->next = target;
+
+    }else if (position > getLength()-1 || position < 0){
+        while(current->next != NULL){
+            current = current->next;
+        }
+        current->next = newnode;
+    }else{
+        for (int i; i < position; i++){
+            current = current->next; 
+        }
+        newnode = current->next;
+        current ->next = newnode;
+    }
+}
+int delete(int position){
+    LINKEDLIST *plist;
+
+    if (get_length()==0){
+        return 0;
+    }
+
+    NODE *current = plist->head;
+    NODE *target; 
+    if (position==0){
+        target = current->next;
+        current = current->next
+        
+         = current;
+        free(target)
 
     }else if (point > getLength()-1 || point < 0){
         while(current->next != NULL){
@@ -65,21 +103,27 @@ int insert(int point, int value){
     }
     return 0;
 }
-int delete(int *point){
-
-}
 int show(){
-    int length = get_length();
-    int *pointer?;
+    LINKEDLIST *plist ;
+    NODE *current;
+    if (get_length()==0){
+        return 0;
+    }else{
+        current = plist->head;
+        while(current->next!=NULL){
+            printf(current->value);
+            current = current->next;
+        }
+    }
 }
 
 
 int main (void){
-    struct LinkedList list;
+    LinkedList list;
     printf("when 0 element\n");
     printf("get length\n");
     get_length();
-    insert(0,0);
+    insert(&list,0,0);
     printf("insert 0\n");
     printf("show\n");
     show();
